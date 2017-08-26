@@ -17,6 +17,7 @@ package com.google.android.gms.samples.vision.ocrreader;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeechService;
 import android.util.Log;
 import android.util.SparseArray;
 import com.google.android.gms.samples.vision.ocrreader.ui.camera.GraphicOverlay;
@@ -28,7 +29,6 @@ import junit.framework.Test;
 
 import java.util.Locale;
 
-
 /**
  * A very simple Processor which gets detected TextBlocks and adds them to the overlay
  * as OcrGraphics.
@@ -36,24 +36,10 @@ import java.util.Locale;
 public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
 
     private GraphicOverlay<OcrGraphic> mGraphicOverlay;
-	private TextToSpeech tts;
+	SparseArray<String> textToSpeak;
 
 	OcrDetectorProcessor(GraphicOverlay<OcrGraphic> ocrGraphicOverlay) {
         mGraphicOverlay = ocrGraphicOverlay;
-	    // Set up the Text To Speech engine.
-	    TextToSpeech.OnInitListener listener =
-			    new TextToSpeech.OnInitListener() {
-				    @Override
-				    public void onInit(final int status) {
-					    if (status == TextToSpeech.SUCCESS) {
-						    Log.d("OnInitListener", "Text to speech engine started successfully.");
-						    tts.setLanguage(Locale.US);
-					    } else {
-						    Log.d("OnInitListener", "Error starting the text to speech engine.");
-					    }
-				    }
-			    };
-	    tts = new TextToSpeech(this.getApplicationContext(), listener);
     }
 
     /**

@@ -1,4 +1,4 @@
-#Wed Aug 23 22:35:42 IST 2017
+#Sat Aug 26 12:54:50 IST 2017
 base.0=/home/nitheesh/Desktop/android-vision-master/visionSamples/ocr-codelab/ocr-reader-complete/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
 file.0=/home/nitheesh/Desktop/android-vision-master/visionSamples/ocr-codelab/ocr-reader-complete/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

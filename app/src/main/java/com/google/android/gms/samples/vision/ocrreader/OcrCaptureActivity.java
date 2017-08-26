@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
@@ -334,6 +335,14 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         }
     }
 
+	public static int getScreenWidth() {
+		return Resources.getSystem().getDisplayMetrics().widthPixels;
+	}
+
+	public static int getScreenHeight() {
+		return Resources.getSystem().getDisplayMetrics().heightPixels;
+	}
+
     /**
      * onTap is called to speak the tapped TextBlock, if any, out loud.
      *
@@ -350,14 +359,19 @@ public final class OcrCaptureActivity extends AppCompatActivity {
                 Log.d(TAG, "text data is being spoken! " + text.getValue());
                 // Speak the string.
                 tts.speak(text.getValue(), TextToSpeech.QUEUE_ADD, null, "DEFAULT");
+
             }
             else {
                 Log.d(TAG, "text data is null");
+	            tts.speak("text data is null", TextToSpeech.QUEUE_ADD, null, "DEFAULT");
             }
         }
         else {
-            Log.d(TAG,"no text detected");
+            Log.d(TAG,"no text detected here");
+	        tts.speak("no text detected here", TextToSpeech.QUEUE_ADD, null, "DEFAULT");
         }
+
+
         return text != null;
     }
 
